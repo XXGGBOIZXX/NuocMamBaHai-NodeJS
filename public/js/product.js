@@ -9,7 +9,7 @@ export default class Product{
     }
 
     async editProduct(data) {
-        const response = await fetch(this.uri, {
+        return await fetch(this.uri, {
           method: 'PATCH', 
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data), 
@@ -21,10 +21,10 @@ export default class Product{
     }
 
     async addProduct(data) {
-    return await fetch('/products', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data), 
-    });
+        return await fetch('/products', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data), 
+        });
     }
 }  

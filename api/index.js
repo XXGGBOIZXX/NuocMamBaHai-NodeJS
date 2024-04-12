@@ -26,7 +26,7 @@ api.get('/', (req, res) => {
 
 //USERS
 //POST login
-app.post('/users', async (req, res) => {
+api.post('/users', async (req, res) => {
   let { uName, pw } = req.body;
   let user = await users.findOne({uName:uName,pw:pw});
   if (!user) {
@@ -38,10 +38,15 @@ app.post('/users', async (req, res) => {
   res.json(User);
 });
 
-// POST /users 
-api.post('/users', async (req, res) => {
-  let user = { uName, pw, fullName, adr, num } = req.body;
-  const exist = await users.findOne({ uName: user.uName });
+// PUT /users 
+api.put('/users', async (req, res) => {
+  let uName= req.body.uName;
+  let num= req.body.num;
+  let adr= req.body.adr;
+  let pw= req.body.pw;
+  let fullName= req.body.fullName;
+  let user = { uName, pw, fullName, adr, num };
+  const exist = await users.findOne({ uName: uName });
   if (exist) {
     return res.status(400).json({ message: `Info in use` });
   }

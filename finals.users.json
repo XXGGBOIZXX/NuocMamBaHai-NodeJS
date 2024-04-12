@@ -1,0 +1,30 @@
+[
+  { 
+  "uName":"admin",
+  "pw":"123456",
+  "fullName":"administrator",
+  "adr":"home",
+  "num":"0000000000"
+  },
+  { 
+  "uName":"haku",
+  "pw":"123456",
+  "fullName":"gia huy",
+  "adr":"home",
+  "num":"2108110026"
+  },
+  { 
+  "uName":"penz",
+  "pw":"123456",
+  "fullName":"dang duy",
+  "adr":"home",
+  "num":"2108110034"
+  },
+  { 
+  "uName":"galahad",
+  "pw":"123456",
+  "fullName":"hoang nam",
+  "adr":"home",
+  "num":"2108110458"
+  }
+]
