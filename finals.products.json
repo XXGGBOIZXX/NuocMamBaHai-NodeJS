@@ -1,3 +1,26 @@
-[{
- 
-}]
+[
+{
+    "name": "Mắm nhĩ cổ truyển",
+    "id": 1,
+    "img": "sp (1).jpg",
+    "price": 85000
+},
+{
+    "name": "Mắm lú",
+    "id": 2,
+    "img": "sp (2).jpg",
+    "price": 75000
+},
+{
+    "name": "Mắm cốt nhĩ",
+    "id": 3,
+    "img": "sp (3).jpg",
+    "price": 45000
+},
+{
+    "name": "Mắm lú tuyệt hảo",
+    "id": 4,
+    "img": "sp (4).jpg",
+    "price": 70000
+}
+]

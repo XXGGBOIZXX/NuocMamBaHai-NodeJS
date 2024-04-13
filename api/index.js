@@ -27,10 +27,10 @@ api.get('/', (req, res) => {
 //USERS
 //POST login
 api.post('/users', async (req, res) => {
-  let { uName, pw } = req.body;
-  let user = await users.findOne({uName:uName,pw:pw});
+  let { username, password } = req.body;
+  let user = await users.findOne({username:username,password:password});
   if (!user) {
-    return res.status(400).json({ message: `Wrong info` });
+    return res.status(400).json({ message: `Invalid info` });
   }
   // Login successful, return user data (potentially excluding sensitive fields like password)
   let User = {...user}; // Create a copy excluding password
@@ -38,15 +38,25 @@ api.post('/users', async (req, res) => {
   res.json(User);
 });
 
+api.get('/users/:username', async(req, res) => {
+  let username = req.param.username;
+  let user = await users.findOne({username:username});
+  if (!user) {
+    return res.status(400).json({ message: `Invalid info` });
+  }
+  let User = {...user}; 
+  delete User.password;
+  res.json(User);
+});
 // PUT /users 
 api.put('/users', async (req, res) => {
-  let uName= req.body.uName;
-  let num= req.body.num;
-  let adr= req.body.adr;
-  let pw= req.body.pw;
-  let fullName= req.body.fullName;
-  let user = { uName, pw, fullName, adr, num };
-  const exist = await users.findOne({ uName: uName });
+  let username= req.body.username;
+  let phone= req.body.phone;
+  let address= req.body.address;
+  let password= req.body.password;
+  let fullname= req.body.fullname;
+  let user = { username, password, fullname, address, phone };
+  const exist = await users.findOne({ username: username });
   if (exist) {
     return res.status(400).json({ message: `Info in use` });
   }
@@ -64,10 +74,24 @@ api.get('/products', async (req, res) => {
   res.send(allProducts);
 });
 
-//POST NEW PRODUCT
-api.post('/products', async (req, res) => {
-  const newProduct = req.body;
+//GET PRODUCT
+api.get('/products/:id', async (req, res) => {
+  let product = await products.findOne({id:req.param.id}); 
+  res.send(product);
+});
+
+//PUT NEW PRODUCT
+api.put('/products', async (req, res) => {
+  let newProduct = req.body;
+  let allProducts = await products.find({}).toArray(); 
+  let newId=1;
+  for (const product of allProducts) {
+    newId+=1;
+  }
+  newProduct.id=newId;
+  console.log(newProduct);
   await products.insertOne(newProduct);
+  res.status();
 });
 
 //PATCH EDIT PRODUCT
@@ -75,11 +99,15 @@ api.patch('/products/:id', async (req, res) => {
   const id = req.params.id;
   const update = req.body;
   await products.updateOne({ id:id }, { $set: update });
+  res.status();
+
 });
 //DELETE PRODUCT
 api.delete('/products/:id', async (req, res) => {
   const id = req.params.id;
   await products.deleteOne({id:id });
+  res.status();
+
 });
 
 
@@ -91,16 +119,18 @@ api.get('/orders', async (req, res) => {
 });
 
 //GET USER'S ORDERS
-api.get('/users/:uName/orders', async (req, res) => {
-  let uName= req.param.uName;
-  let uOrders = await orders.find({uName}).toArray(); 
+api.get('/users/:username/orders', async (req, res) => {
+  let username= req.param.username;
+  let uOrders = await orders.find({username:username}).toArray(); 
   res.send(uOrders);
 });
 
 //CREATE ORDER
-api.post('/users/:uName/orders', async (req, res) => {
+api.put('/orders', async (req, res) => {
   let order = req.body;
   await orders.insertOne(order);
+  res.status();
+
 });
 
 export default initApi;
