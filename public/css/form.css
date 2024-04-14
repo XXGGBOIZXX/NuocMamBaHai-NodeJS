@@ -1,0 +1,82 @@
+.signup-form,
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 10px; /* Space between form elements */
+}
+
+.signup-form h2,
+.signin-form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.signup-form label,
+.signin-form label {
+  font-size: 16px;
+  /* Increased width to match input field (adjust as needed) */
+  width: 100px; 
+  display: inline-block; /* Ensures labels occupy inline space */
+  margin-bottom: 5px;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="password"],
+.signup-form input[type="tel"],
+.signin-form input[type="text"],
+.signin-form input[type="password"],
+.signin-form input[type="tel"] {
+  width: 100%; /* Maintains full width */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  /* Set display: block to remove floating behavior */
+  display: block;
+}
+
+.signup-form button[type="submit"],
+.signin-form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.signup-form a,
+.signin-form a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  margin-top: 10px; /* Adjust margin for spacing */
+  display: block;
+  text-align: center;
+}
+
+
+.product-table {
+  margin: 0 auto;
+  border-collapse: collapse; /* Remove borders between cells for cleaner look */
+}
+
+.product-table th,
+.product-table td {
+  padding: 10px; /* Adjust padding for spacing */
+}
+
+
+.product-table td {
+  /* Additional styles for table cells (optional) */
+  border: 1px solid #ddd; /* Add borders for separation (optional) */
+}

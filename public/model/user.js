@@ -3,7 +3,7 @@ export default class User{
       Object.assign(this,data);
   }
   static async signIn(username, password) {
-        let res = await fetch('/users', {
+        let res = await fetch('/api/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: username, password: password })
@@ -16,12 +16,12 @@ export default class User{
     }
   
   static async signUp(username, password, fullname, address, phone) {
-    let res = await fetch('/users', {
+    let res = await fetch('/api/users', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        username: username,
-        password: password,
+        username:username,
+        password:password,
         fullname:fullname, 
         address:address, 
         phone:phone })
@@ -32,6 +32,7 @@ export default class User{
     }
     return new User(data);
   }
+  
   
   
 }  

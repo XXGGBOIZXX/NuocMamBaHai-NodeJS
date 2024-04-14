@@ -1,10 +1,11 @@
 export default class Product{
     constructor(data) {
         Object.assign(this,data);
-        this.uri=`/products/${this.id}`;
+        this.uri=`/api/products/${this.id}`;
     }
+
     static async getProductList(){
-        let products =await(await fetch(`/products`)).json();
+        let products =await(await fetch(`/api/products`)).json();
         return products;
     }
 
@@ -21,8 +22,8 @@ export default class Product{
     }
 
     async addProduct(data) {
-        return await fetch('/products', {
-            method: 'POST',
+        return await fetch('/api/products', {
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data), 
         });

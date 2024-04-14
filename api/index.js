@@ -9,7 +9,7 @@ let orders;
 
 const initApi = async (app) => {
   app.set("json spaces", 2);
-  app.use("/", api);
+  app.use("/api", api);
   let conn = await MongoClient.connect("mongodb://127.0.0.1");
   let db = conn.db("JSfinal");
   users = db.collection("users");
@@ -38,16 +38,6 @@ api.post('/users', async (req, res) => {
   res.json(User);
 });
 
-api.get('/users/:username', async(req, res) => {
-  let username = req.param.username;
-  let user = await users.findOne({username:username});
-  if (!user) {
-    return res.status(400).json({ message: `Invalid info` });
-  }
-  let User = {...user}; 
-  delete User.password;
-  res.json(User);
-});
 // PUT /users 
 api.put('/users', async (req, res) => {
   let username= req.body.username;
@@ -76,7 +66,8 @@ api.get('/products', async (req, res) => {
 
 //GET PRODUCT
 api.get('/products/:id', async (req, res) => {
-  let product = await products.findOne({id:req.param.id}); 
+  let id=req.param.id;
+  let product = await products.findOne({id:id}); 
   res.send(product);
 });
 
@@ -102,6 +93,7 @@ api.patch('/products/:id', async (req, res) => {
   res.status();
 
 });
+
 //DELETE PRODUCT
 api.delete('/products/:id', async (req, res) => {
   const id = req.params.id;
@@ -119,7 +111,7 @@ api.get('/orders', async (req, res) => {
 });
 
 //GET USER'S ORDERS
-api.get('/users/:username/orders', async (req, res) => {
+api.get('/orders/:username', async (req, res) => {
   let username= req.param.username;
   let uOrders = await orders.find({username:username}).toArray(); 
   res.send(uOrders);

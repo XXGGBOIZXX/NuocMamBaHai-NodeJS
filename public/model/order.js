@@ -17,11 +17,12 @@ export default class Order {
     }
 
     static async getOrders(){
-      let orders =await(await fetch(`/orders`)).json();
+      let orders =await(await fetch(`/api/orders`)).json();
       return orders;
     }
+
     async makeOrder(){
-      return await fetch(`/orders`,{
+      return await fetch(`/api/orders`,{
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('img\\body.jpg'); 
+  background-repeat: repeat; /* Repeat the image */
+  background-size: cover; /* Cover the entire body area */
+}
+/* Remove list item bullet points */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style buttons */
+button {
+  background-color: #800000; /* Change button color */
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+header {
+  position: relative; /* Make header a container for positioning elements */
+  display: flex; /* Arrange elements horizontally */
+  align-items: center; /* Align content vertically within header */
+  height: 150px; /* Adjust height as needed */
+  background-color: #800000; /* Optional background color */
+}
+
+/* Style the banner image */
+.banner {
+  position: absolute; /* Position banner on top of header */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the banner horizontally and vertically */
+}
+
+/* Style the navigation element */
+nav {
+  display: flex;
+  justify-content: space-between; /* Distribute navigation and user buttons evenly */
+  width: 100%; /* Stretch navigation across full width */
+  position: absolute; /* Position navigation within header */
+  bottom: 0; /* Place navigation at the bottom of the header */
+}
+
+/* Style the navigation buttons */
+.navigation button,
+.user-actions button {
+  padding: 10px 20px;
+  border: none;
+  color: #fff; /* Adjust button text color */
+  cursor: pointer;
+}
+
+/* Style the navigation buttons (left-aligned) */
+.navigation {
+  flex-grow: 1; /* Allow navigation buttons to fill available space */
+}
+
+.navigation li {
+  display: inline-block;
+}
+
+/* Style the user buttons (right-aligned) */
+.user-actions {
+  display: flex; /* Arrange user buttons horizontally */
+}
+
+
+
+footer {
+  background-color: #804900a4; /* Optional background color */
+
+  bottom: 0; /* Position it at the bottom */
+  left: 0; /* Align it to the left edge */
+  width: 100%; /* Make it span the full width */
+}
+.contact-info {
+  padding: 10px;
+  margin-bottom: -70px;
+  margin-left: 30px; /* Adjust the value for desired indentation */
+}
+#username {
+  transform: translateY(5px);
+  color: white;
+  margin: 10px;
+}

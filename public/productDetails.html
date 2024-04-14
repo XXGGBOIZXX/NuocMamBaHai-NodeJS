@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+</head>
+<body>
+    <div class="product">
+        <img src="" alt="Product Image" class="img">
+        <div class="product-info">
+            <p class="name">Product Name: <input type="text" class="name-field" readonly></p>
+            <p class="price">Price: <input type="text" class="price-field" readonly> VND</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedProduct = JSON.parse(sessionStorage.getItem('product'));
+            const imgElement = document.querySelector('.img');
+            const nameField = document.querySelector('.name-field');
+            const priceField = document.querySelector('.price-field');
+
+            imgElement.src = selectedProduct.img;
+            nameField.value = selectedProduct.name;
+            priceField.value = selectedProduct.price; 
+        });
+    </script>
+</body>
+</html>
