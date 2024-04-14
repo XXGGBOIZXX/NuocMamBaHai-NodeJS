@@ -66,8 +66,8 @@ api.get('/products', async (req, res) => {
 
 //GET PRODUCT
 api.get('/products/:id', async (req, res) => {
-  let id=req.param.id;
-  let product = await products.findOne({id:id}); 
+  let id= parseInt(req.params.id);
+  let product = await products.findOne({id}); 
   res.send(product);
 });
 
@@ -87,19 +87,17 @@ api.put('/products', async (req, res) => {
 
 //PATCH EDIT PRODUCT
 api.patch('/products/:id', async (req, res) => {
-  const id = req.params.id;
+  let id= parseInt(req.params.id);
   const update = req.body;
-  await products.updateOne({ id:id }, { $set: update });
+  await products.updateOne({ id}, { $set: update });
   res.status();
-
 });
 
 //DELETE PRODUCT
 api.delete('/products/:id', async (req, res) => {
-  const id = req.params.id;
-  await products.deleteOne({id:id });
-  res.status();
-
+  let id= parseInt(req.params.id);
+  await products.deleteOne({id});
+  res.status(200).json({item:id});
 });
 
 
@@ -110,12 +108,6 @@ api.get('/orders', async (req, res) => {
   res.send(allOrders);
 });
 
-//GET USER'S ORDERS
-api.get('/orders/:username', async (req, res) => {
-  let username= req.param.username;
-  let uOrders = await orders.find({username:username}).toArray(); 
-  res.send(uOrders);
-});
 
 //CREATE ORDER
 api.put('/orders', async (req, res) => {

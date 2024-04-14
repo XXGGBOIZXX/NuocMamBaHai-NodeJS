@@ -6,6 +6,13 @@
   "address":"home",
   "phone":"0000000000"
   },
+  {
+  "username": "tester",
+  "password": "123",
+  "fullname": "test user",
+  "address": "256 pasteur",
+  "phone": "0937736581"
+  },
   { 
   "username":"haku",
   "password":"123456",

@@ -20,7 +20,7 @@ export default class Order {
       let orders =await(await fetch(`/api/orders`)).json();
       return orders;
     }
-
+    
     async makeOrder(){
       return await fetch(`/api/orders`,{
         method: 'PUT',

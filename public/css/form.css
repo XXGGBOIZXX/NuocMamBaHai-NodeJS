@@ -80,3 +80,91 @@
   /* Additional styles for table cells (optional) */
   border: 1px solid #ddd; /* Add borders for separation (optional) */
 }
+
+.product {
+  display: flex; /* Make the product element flexible for centering */
+  justify-content: center; /* Horizontally center the content within */
+  align-items: center; /* Vertically center the content within */
+  margin: 20px auto; /* Add some margin for spacing */
+  border: 1px solid #ddd; /* Add a border for definition */
+  padding: 10px; /* Add some padding inside the product element */
+  width: 500px; /* Set a desired width for the product */
+}
+
+.img {
+  width: 200px; /* Adjust image size as needed */
+  height: 200px; /* Adjust image size as needed */
+  object-fit: cover; /* Ensure image fills the space while maintaining aspect ratio */
+}
+
+.product-info {
+  margin-left: 20px; /* Add some margin between the image and product info */
+}
+
+.name, .price {
+  font-size: 18px; /* Increase text size */
+  margin-bottom: 5px; /* Add some margin between lines */
+}
+
+.name-field, .price-field {
+  font-size: 15px; /* Increase text field size */
+  padding: 5px; /* Add padding for better user experience */
+  border: 1px solid #ccc; /* Add a border to the text fields */
+  border-radius: 3px; /* Add rounded corners for a nicer look */
+  width: 200px; /* Set a width for the text fields */
+}
+
+.edit-button, .delete-button, .addcart-button {
+  
+  padding: 10px 20px; /* Add padding for better button size */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Add rounded corners to buttons */
+  margin-top: 10px; /* Add some margin between buttons */
+  cursor: pointer; /* Indicate clickable behavior */
+}
+
+
+.hidden {
+  display: none;
+}
+
+#cart {
+  text-align: center; /* Center the entire cart section */
+}
+
+#cart-items {
+  margin-bottom: 20px; /* Add space between items and cart summary */
+}
+
+#cart-summary {
+  border-collapse: collapse; /* Make table borders collapse */
+  width: 500px; /* Set a desired width for the table */
+  margin: 0 auto; /* Center the table horizontally */
+}
+
+/* Style for cart items container */
+.cart-item {
+  display: flex; /* Make cart items display inline-block elements side-by-side */
+  align-items: center; /* Vertically align content within cart item */
+  margin-bottom: 10px; /* Add space between cart items */
+}
+
+.cart-item img {
+  width: 100px; /* Adjust image width as needed */
+  height: 100px; /* Adjust image height as needed */
+  margin-right: 10px; /* Add space between image and product details */
+}
+
+#cart-summary th, #cart-summary td {
+  padding: 10px; /* Add padding for readability */
+  border: 1px solid #ddd; /* Add table borders */
+}
+
+#cart-summary thead {
+  font-weight: bold; /* Bold text for table header */
+}
+
+#cart-total {
+  text-align: right; /* Align total amount to the right */
+}
+

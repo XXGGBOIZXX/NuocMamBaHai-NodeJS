@@ -1,0 +1,69 @@
+[{
+  "_id": {
+    "$oid": "661ab03ba486d04a0135d52c"
+  },
+  "user": {
+    "_id": "661ab2971f495937ceafe145",
+    "username": "tester",
+    "fullname": "test user",
+    "address": "256 pasteur",
+    "phone": "0937736581"
+  },
+  "products": [
+    {
+      "_id": "661992654e4b5b3b72d6514e",
+      "name": "Mém lỏ",
+      "img": "img/sp (8).jpg",
+      "price": 40000,
+      "id": 5,
+      "uri": "/products/5"
+    },
+    {
+      "_id": "661988992a5336f8b84e4da8",
+      "name": "Mắm lú tuyệt hảo",
+      "id": 4,
+      "img": "img/sp (4).jpg",
+      "price": 70000,
+      "uri": "/products/4"
+    }
+  ],
+  "total": 110000
+},
+{
+  "_id": {
+    "$oid": "661ab2f41f495937ceafe146"
+  },
+  "user": {
+    "username": "tester",
+    "fullname": "test user",
+    "address": "256 pasteur",
+    "phone": "0937736581"
+  },
+  "products": [
+    {
+      "_id": "661992654e4b5b3b72d6514e",
+      "name": "Mém lỏ",
+      "img": "img/sp (8).jpg",
+      "price": 40000,
+      "id": 5,
+      "uri": "/products/5"
+    },
+    {
+      "_id": "661992654e4b5b3b72d6514e",
+      "name": "Mém lỏ",
+      "img": "img/sp (8).jpg",
+      "price": 40000,
+      "id": 5,
+      "uri": "/products/5"
+    },
+    {
+      "_id": "661988992a5336f8b84e4da8",
+      "name": "Mắm lú tuyệt hảo",
+      "id": 4,
+      "img": "img/sp (4).jpg",
+      "price": 70000,
+      "uri": "/products/4"
+    }
+  ],
+  "total": 150000
+}]

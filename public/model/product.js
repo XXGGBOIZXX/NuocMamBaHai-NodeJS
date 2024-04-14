@@ -8,6 +8,11 @@ export default class Product{
         let products =await(await fetch(`/api/products`)).json();
         return products;
     }
+    
+    async getProduct(id){
+        let products =await(await fetch(`/api/products/${id}`)).json();
+        return products;
+    }
 
     async editProduct(data) {
         return await fetch(this.uri, {
