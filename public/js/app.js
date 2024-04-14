@@ -14,6 +14,7 @@ class App{
     this.placeOrder();
     this.delete();
     this.displayOrders();
+    this.add();
     // this.edit();
   }
 
@@ -25,10 +26,11 @@ class App{
     let ordersButton = document.getElementById("orders");
     let signoutButton = document.getElementById("signout");
     let addButton = document.getElementById("add");
+    let browseButton = document.getElementById("browse");
     let deleteButton = document.getElementById("delete");
     let addcartButton = document.getElementById("addcart");
     let nameField = document.querySelector(".name-field");
-    const priceField = document.querySelector(".price-field");
+    let priceField = document.querySelector(".price-field");
     let user= JSON.parse(sessionStorage.getItem('user'));
     if (user){
       usernameElement.textContent = user.username;
@@ -40,6 +42,7 @@ class App{
       {
         ordersButton.style.display = "block";
         addButton.classList.remove("hidden");
+        browseButton.classList.remove("hidden");
         deleteButton.classList.remove("hidden");
         nameField.readOnly = false;
         priceField.readOnly = false;
@@ -115,11 +118,52 @@ class App{
       
     });
   }
+  
+  //  browseAndLoad() {
+  //   const input = document.createElement("input");
+  //   input.type = "file";
+  //   input.accept = "image/*"; // Only accept image files
+  
+  //   // Handle file selection
+  //   input.addEventListener("change", (event) => {
+  //     const file = event.target.files[0];
+  
+  //     if (!file) {
+  //       return; // No file selected
+  //     }
+  
+  //     const reader = new FileReader();
+  
+  //     // Validate image file type
+  //     if (!file.type.match("image/")) {
+  //       alert("Please select an image file.");
+  //       return;
+  //     }
+  
+  //     reader.onload = (event) => {
+  //       const imageContainer = document.querySelector(".image-container"); // Replace with your selector
+  //       const image = document.createElement("img");
+  //       image.src = event.target.result;
+  //       imageContainer.innerHTML = ""; // Clear previous content (optional)
+  //       imageContainer.appendChild(image);
+  
+  //       // Get and return image name
+  //       console.log(file.name);
+  //       return file.name; // You can access the image name here
+  //     };
+  
+  //     reader.readAsDataURL(file);
+  //   });    
+  // }
 
-  async add(){
-    sessionStorage.removeItem("product");
-    
-  }
+  // async add(){
+  //   // sessionStorage.removeItem("product");
+  //   let but = document.getElementById("browse");
+  //   but.addEventListener("click",()=>{
+  //     console.log(browseAndLoad());
+
+  //   });
+  // }
 
   async delete(){
     let product= new Product (await JSON.parse(sessionStorage.getItem('product')));
@@ -204,7 +248,6 @@ class App{
 
     });
   }
-
 
   async productDetails(){
     document.addEventListener('DOMContentLoaded', () => {
