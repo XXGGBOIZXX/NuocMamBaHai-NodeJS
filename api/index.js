@@ -80,24 +80,24 @@ api.put('/products', async (req, res) => {
     newId+=1;
   }
   newProduct.id=newId;
-  console.log(newProduct);
   await products.insertOne(newProduct);
-  res.status();
+  res.status(200).json(newProduct);
 });
 
-//PATCH EDIT PRODUCT
+//PATCH PRODUCT
 api.patch('/products/:id', async (req, res) => {
   let id= parseInt(req.params.id);
   const update = req.body;
   await products.updateOne({ id}, { $set: update });
-  res.status();
+  res.status(200).json({success:true});
 });
 
 //DELETE PRODUCT
 api.delete('/products/:id', async (req, res) => {
   let id= parseInt(req.params.id);
   await products.deleteOne({id});
-  res.status(200).json({item:id});
+  res.status(200).json({success:true});
+
 });
 
 
@@ -113,7 +113,8 @@ api.get('/orders', async (req, res) => {
 api.put('/orders', async (req, res) => {
   let order = req.body;
   await orders.insertOne(order);
-  res.status();
+  res.status(200).json({success:true});
+
 
 });
 

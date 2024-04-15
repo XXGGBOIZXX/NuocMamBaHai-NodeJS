@@ -5,52 +5,61 @@ class App{
   constructor(){
     this.updateButtons();
     this.displayProducts();
-    this.SignIn(); // Assuming these functions don't rely on 'this' context
+    this.productDetails();
+    this.SignIn();
     this.SignUp();
     this.SignOut();
-    this.productDetails();
+    
     this.displayCart();
     this.add2Cart();
     this.placeOrder();
     this.delete();
+    this.productAdmin();
+
     this.displayOrders();
-    this.add();
-    // this.edit();
   }
 
   async updateButtons() {
+    let user= JSON.parse(sessionStorage.getItem('user'));
     let usernameElement = document.getElementById("username");
     let signupButton = document.getElementById("signup");
     let signinButton = document.getElementById("signin");
-    let cartButton = document.getElementById("cart");
-    let ordersButton = document.getElementById("orders");
     let signoutButton = document.getElementById("signout");
-    let addButton = document.getElementById("add");
-    let browseButton = document.getElementById("browse");
-    let deleteButton = document.getElementById("delete");
+
     let addcartButton = document.getElementById("addcart");
+    let cartButton = document.getElementById("cart");
+
+    let ordersButton = document.getElementById("orders");
+    let addButton = document.getElementById("add");
+    let editButton = document.getElementById("edit");
+    let deleteButton = document.getElementById("delete");
+
     let nameField = document.querySelector(".name-field");
     let priceField = document.querySelector(".price-field");
-    let user= JSON.parse(sessionStorage.getItem('user'));
+
     if (user){
       usernameElement.textContent = user.username;
-      
       signupButton.style.display = "none";
       signinButton.style.display = "none";
       signoutButton.style.display = "block";
-      if (user.username== "admin")
+
+      if (user.username == "admin")
       {
+        
         ordersButton.style.display = "block";
+        
+
         addButton.classList.remove("hidden");
-        browseButton.classList.remove("hidden");
+        editButton.classList.remove("hidden");
         deleteButton.classList.remove("hidden");
+
         nameField.readOnly = false;
         priceField.readOnly = false;
+        
       }
       else
       {
         cartButton.style.display="block"; 
-
         addcartButton.classList.remove("hidden");
       }
     }
@@ -119,51 +128,6 @@ class App{
     });
   }
   
-  //  browseAndLoad() {
-  //   const input = document.createElement("input");
-  //   input.type = "file";
-  //   input.accept = "image/*"; // Only accept image files
-  
-  //   // Handle file selection
-  //   input.addEventListener("change", (event) => {
-  //     const file = event.target.files[0];
-  
-  //     if (!file) {
-  //       return; // No file selected
-  //     }
-  
-  //     const reader = new FileReader();
-  
-  //     // Validate image file type
-  //     if (!file.type.match("image/")) {
-  //       alert("Please select an image file.");
-  //       return;
-  //     }
-  
-  //     reader.onload = (event) => {
-  //       const imageContainer = document.querySelector(".image-container"); // Replace with your selector
-  //       const image = document.createElement("img");
-  //       image.src = event.target.result;
-  //       imageContainer.innerHTML = ""; // Clear previous content (optional)
-  //       imageContainer.appendChild(image);
-  
-  //       // Get and return image name
-  //       console.log(file.name);
-  //       return file.name; // You can access the image name here
-  //     };
-  
-  //     reader.readAsDataURL(file);
-  //   });    
-  // }
-
-  // async add(){
-  //   // sessionStorage.removeItem("product");
-  //   let but = document.getElementById("browse");
-  //   but.addEventListener("click",()=>{
-  //     console.log(browseAndLoad());
-
-  //   });
-  // }
 
   async delete(){
     let product= new Product (await JSON.parse(sessionStorage.getItem('product')));
@@ -176,57 +140,46 @@ class App{
     });
   }
 
-  // async edit() {
-  //     let productData = await JSON.parse(sessionStorage.getItem('product'));
-  //     let product = new Product(productData);
-  
-  //     let browseButton = document.querySelector(".product .browse-button");
-  //     let nameField = document.querySelector(".product .name-field");
-  //     let priceField = document.querySelector(".product .price-field");
-  //     let productImage = document.querySelector(".product .img"); // Assuming the image element class
-  //     let editButton = document.getElementById("edit");
-  //     let selectedFile;
+  async add(){
+   
+  }
 
-  //     browseButton.addEventListener("click", async () => {
-  //       let fileInput = document.createElement("input");
-  //       fileInput.type = "file";
-  //       fileInput.accept = "image/*";
-  //       fileInput.style.display = "none";
-  //       document.body.appendChild(fileInput);
-  //       fileInput.click();
-  //       document.body.removeChild(fileInput);
-  
-  //       selectedFile = await new Promise((resolve, reject) => {
-  //         fileInput.addEventListener("change", (event) => {
-  //           resolve(event.target.files[0]);
-  //         });
-  //       });
-  
-  //       if (!selectedFile || !selectedFile.type.startsWith("image/")) {
-  //         alert("Please select a valid image file.");
-  //         return;
-  //       }
-  
-  //       const reader = new FileReader();
-  //       reader.readAsDataURL(selectedFile);
-  
-  //       reader.onload = () => {
-  //         productImage.src = reader.result; // Update image source with data URL
-  //       };
-  //     });
+  async productAdmin() {
+      let productData = await JSON.parse(sessionStorage.getItem('product'));
+      let product = new Product(productData);
+      let nameField = document.querySelector(".product .name-field");
+      let priceField = document.querySelector(".product .price-field");
+      let productImage = document.querySelector(".product .img"); 
+      let editButton = document.getElementById("edit");
+      let addButton = document.getElementById("add");
+      let file= document.getElementById("image");
+      let img= productImage.src;
+      file.onchange= function(){
+          productImage.src=URL.createObjectURL(file.files[0]);
+          img="img/"+file.files[0].name;
+      }
       
-  //     editButton.addEventListener('click', async () => {
-  //       let name = nameField.value;
-  //       let price = parseInt(priceField.value);
-  //       let img = "img/"+selectedFile.name;
-  //       let data ={name:name, price:price, img:img}
-  //       let res = await product.editProduct(data); // Call product edit function
-  //       console.log( res.json());
-  //       alert("Changes saved!");
-  //       window.location.href = '/products.html'; // Redirect to products page
-  //     });
+      editButton.addEventListener('click', async () => {
+        let name = nameField.value;
+        let price = parseInt(priceField.value);
+        let data ={name, price,img}
+        let res = await product.editProduct(data);
+        console.log( res.json());
+        alert("Changes saved!");
+        window.location.href = '/products.html'; 
+      });
 
-  // }
+      addButton.addEventListener('click', async () => {
+        let name = nameField.value;
+        let price = parseInt(priceField.value);
+        let data ={name, price,img}
+        let res = await product.addProduct(data);
+        console.log( res.json());
+        alert("Product added!");
+        window.location.href = '/products.html'; 
+      });
+
+  }
 
   async placeOrder(){
    
