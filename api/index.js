@@ -81,7 +81,7 @@ api.put('/products', async (req, res) => {
   }
   newProduct.id=newId;
   await products.insertOne(newProduct);
-  res.status(200).json(newProduct);
+  res.status(200).json({success:true});
 });
 
 //PATCH PRODUCT
