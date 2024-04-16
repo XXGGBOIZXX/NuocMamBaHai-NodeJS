@@ -1,5 +1,6 @@
 .signup-form,
 .signin-form {
+  color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,6 +36,7 @@
 .signin-form input[type="password"],
 .signin-form input[type="tel"] {
   width: 100%; /* Maintains full width */
+  color: #333;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;

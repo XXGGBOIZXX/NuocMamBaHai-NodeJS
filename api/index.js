@@ -115,7 +115,6 @@ api.put('/orders', async (req, res) => {
   await orders.insertOne(order);
   res.status(200).json({success:true});
 
-
 });
 
 export default initApi;

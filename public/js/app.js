@@ -35,6 +35,7 @@ class App{
     let deleteButton = document.getElementById("delete");
 
     let nameField = document.querySelector(".name-field");
+    let browseButton = document.querySelector("#browse");
     let priceField = document.querySelector(".price-field");
 
     if (user){
@@ -52,10 +53,11 @@ class App{
         addButton.classList.remove("hidden");
         editButton.classList.remove("hidden");
         deleteButton.classList.remove("hidden");
-
+        
         nameField.readOnly = false;
         priceField.readOnly = false;
-        
+        browseButton.classList.remove("hidden");
+
       }
       else
       {
@@ -140,13 +142,12 @@ class App{
     });
   }
 
-  async add(){
-   
-  }
+
 
   async productAdmin() {
       let productData = await JSON.parse(sessionStorage.getItem('product'));
       let product = new Product(productData);
+
       let nameField = document.querySelector(".product .name-field");
       let priceField = document.querySelector(".product .price-field");
       let productImage = document.querySelector(".product .img"); 
@@ -203,16 +204,14 @@ class App{
   }
 
   async productDetails(){
-    document.addEventListener('DOMContentLoaded', () => {
-      const selectedProduct = JSON.parse(sessionStorage.getItem('product'));
-      const imgElement = document.querySelector('.img');
-      const nameField = document.querySelector('.name-field');
-      const priceField = document.querySelector('.price-field');
+      let selectedProduct = JSON.parse(sessionStorage.getItem('product'));
+      let imgElement = document.querySelector('.img');
+      let nameField = document.querySelector('.name-field');
+      let priceField = document.querySelector('.price-field');
 
       imgElement.src = selectedProduct.img;
       nameField.value = selectedProduct.name;
       priceField.value = selectedProduct.price; 
-  });
   }
 
   async displayCart(){
