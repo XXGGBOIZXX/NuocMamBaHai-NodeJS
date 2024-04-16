@@ -36,10 +36,9 @@
 .signin-form input[type="password"],
 .signin-form input[type="tel"] {
   width: 100%; /* Maintains full width */
-  color: #333;
+  color: #000000;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
   border-radius: 3px;
   /* Set display: block to remove floating behavior */
   display: block;
@@ -59,7 +58,7 @@
 .signup-form a,
 .signin-form a {
   text-decoration: none;
-  color: #333;
+  color: #000000;
   font-size: 14px;
   margin-top: 10px; /* Adjust margin for spacing */
   display: block;
